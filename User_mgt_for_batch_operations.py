@@ -51,7 +51,25 @@ print("Batch user creation complete.")
 
 
 
-# 2. Deleting Users
+
+
+# 2. Add Users on Windows System
+#On Windows, instead of useradd, you can use PowerShell or net user commands:
+import os
+
+users = [
+  ("alice", "Secure123"),
+  ("bob", "Passw0rd!"),
+]
+
+for username, password in users:
+  os.system(f'net user {username} {password} /add')
+
+
+
+
+
+# 3. Deleting Users
 users_to_delete = ["bob", "charlie"]
 
 for user in users_to_delete:
@@ -65,8 +83,7 @@ Deleting user: charlie
 """
 
 
-
-# 3. Batch Password Generate
+# 4. Batch Password Generate
 import random
 import string
 import os
@@ -92,10 +109,14 @@ charlie new password: tH6eM9bR2u
 
 
 
-# 4. Logging Batch Operations
+# 5. Logging Batch Operations
 import datetime
 
 with open("user_log.txt", "a") as log:
+  log.write(f"Batch run at {datetime.datetime.now()}\n")
+  log.write("Users created: alice, bob, charlie\n\n")
+
+
 
 
 
